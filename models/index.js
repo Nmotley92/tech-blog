@@ -27,4 +27,4 @@ Comment.belongsTo(Post, {
 });
 
 
-module.exports = { User, Gallery, Painting };
+module.exports = { User, Post, Comment };

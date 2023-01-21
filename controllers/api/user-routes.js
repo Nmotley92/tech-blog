@@ -79,7 +79,7 @@ router.post('/logout', (req, res) => {
     
     module.exports = router;
 
-module.exports = router;
+
 
 //don't forget to add the routes to the index.js file in the api folder
 

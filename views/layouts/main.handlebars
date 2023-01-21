@@ -16,18 +16,14 @@
   <nav class="bg-white p-6">
     <a href="/" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Home</a>
     <a href="/dashboard" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Dashboard</a>
-    {{#if not req.session.loggedIn}}
+    {{#if loggedIn}}
+    <a href="/logout" id="logout" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Logout</a>
+    {{else}}
     <a href="/login" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Login</a>
     <a href="/signup" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Signup</a>
-    {{else}}
-    <a href="/logout" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Logout</a>
     {{/if}}
   </nav>
   <main class="bg-white p-6">
-    <aside class="mb-6">
-      <h2 class="text-xl font-medium">Enjoy the blog posts!</h2>
-      <p class="text-base font-medium">Here you will find all the latest tech news and blogs</p>
-    </aside>
     <div class="blogs">
       {{{body}}}
     </div>

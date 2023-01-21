@@ -128,3 +128,4 @@ router.delete('/delete/comment/:id', ensureAuthenticated, async (req, res) => {
     }
   });
 
+  module.exports = router;
