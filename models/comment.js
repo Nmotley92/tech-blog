@@ -22,7 +22,11 @@ Comment.init(
     comment_by: {
         type: DataTypes.STRING,
         allowNull: false,
+        references: {
+            model: 'user',
+            key: 'username',
   },
+}
 },
   {
     sequelize,

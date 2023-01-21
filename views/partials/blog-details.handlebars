@@ -1,10 +1,11 @@
-<div class="blog-details">
-  <h2>{{title}}</h2>
-  <p>{{content}}</p>
-  <p>{{post_date}}</p>
-  <p>By: {{posted_by}}</p>
+{{!-- blog card --}}
+<div class="blog-details p-4 border rounded">
+  <h2 class="text-lg font-medium">{{title}}</h2>
+  <p class="text-gray-700">{{content}}</p>
+  <p class="text-gray-600">{{post_date}}</p>
+  <p class="text-gray-600">By: {{posted_by}}</p>
   {{#if loggedIn}}
-  <button class="edit-btn">Edit</button>
-  <button class="delete-btn">Delete</button>
+  <button class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Edit</button>
+  <button class="bg-red-500 text-white p-2 rounded hover:bg-red-600">Delete</button>
   {{/if}}
 </div>

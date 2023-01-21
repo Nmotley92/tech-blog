@@ -26,6 +26,10 @@ Post.init(
     posted_by: {
         type: DataTypes.STRING,
         allowNull: false,
+        references: {
+            model: 'user',
+            key: 'username',
+        },
   },
 },
   {

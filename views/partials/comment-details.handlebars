@@ -1,11 +1,11 @@
-<!-- comment-details.handlebars -->
-<div class="comment">
-  <p>{{comment_text}}</p>
-  <p class="comment-date">Commented by {{comment_by}} on {{comment_date}}</p>
+<!-- comments card -->
+<div class="flex flex-col py-2">
+  <p class="text-gray-700">{{comment_text}}</p>
+  <p class="text-gray-500">Commented by {{comment_by}} on {{comment_date}}</p>
   {{#if loggedIn}}
-  <div class="comment-actions">
-    <button class="edit-comment">Edit</button>
-    <button class="delete-comment">Delete</button>
+  <div class="flex justify-between">
+    <button class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">Edit</button>
+    <button class="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600">Delete</button>
   </div>
   {{/if}}
 </div>
