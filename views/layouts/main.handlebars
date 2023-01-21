@@ -16,18 +16,23 @@
     <h1>The Coder's Corner /h1>
   </header>
   <nav>
-    <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
+  <a href="/">Home</a>
+  <a href="/dashboard">Dashboard</a>
+  {{#if not req.session.loggedIn}}
     <a href="/login">Login</a>
     <a href="/signup">Signup</a>
-  </nav>
+  {{else}}
+    <a href="/logout">Logout</a>
+  {{/if}}
+</nav>
+
   <main>
     {{!-- aside will also feature blogs --}}
     <aside>
       <h2>Enjoy the blog posts!</h2>
       <p>Here you will find all the latest tech news and blogs</p>
     </aside>
-    <div class="gallery">
+    <div class="blogs">
       {{{body}}}
     </div>
   </main>

@@ -23,7 +23,11 @@ Post.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    posted_by: {
+        type: DataTypes.STRING,
+        allowNull: false,
   },
+},
   {
     sequelize,
     timestamps: false,

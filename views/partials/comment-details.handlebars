@@ -1,0 +1,11 @@
+<!-- comment-details.handlebars -->
+<div class="comment">
+  <p>{{comment_text}}</p>
+  <p class="comment-date">Commented by {{comment_by}} on {{comment_date}}</p>
+  {{#if loggedIn}}
+  <div class="comment-actions">
+    <button class="edit-comment">Edit</button>
+    <button class="delete-comment">Delete</button>
+  </div>
+  {{/if}}
+</div>

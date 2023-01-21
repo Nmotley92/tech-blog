@@ -19,7 +19,11 @@ Comment.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    comment_by: {
+        type: DataTypes.STRING,
+        allowNull: false,
   },
+},
   {
     sequelize,
     timestamps: false,

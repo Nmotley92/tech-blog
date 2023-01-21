@@ -1,0 +1,20 @@
+<div class="blog-view">
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <p>Posted by {{posted_by}} on {{post_date}}</p>
+    {{#if loggedIn}}
+    <button id="edit-blog">Edit</button>
+    <button id="delete-blog">Delete</button>
+    {{/if}}
+    <h3>Comments</h3>
+    {{#each comments as |comment|}}
+        <div class="comment">
+            <p>{{comment_text}}</p>
+            <p>Commented by {{comment_by}} on {{comment_date}}</p>
+            {{#if loggedIn}}
+            <button id="edit-comment">Edit</button>
+            <button id="delete-comment">Delete</button>
+            {{/if}}
+        </div>
+    {{/each}}
+</div>
