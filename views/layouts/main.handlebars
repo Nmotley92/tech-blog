@@ -8,17 +8,24 @@
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+ {{!-- need to create a main view for a tech blog called the coders corner With a nav bar with a home, dashboard, and a logut/ login nav --}}
+
 
 <body>
   <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
+    <h1>The Coder's Corner /h1>
   </header>
   <nav>
     <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
   </nav>
   <main>
+    {{!-- aside will also feature blogs --}}
     <aside>
-      <h2>Enjoy the galleries!</h2>
+      <h2>Enjoy the blog posts!</h2>
+      <p>Here you will find all the latest tech news and blogs</p>
     </aside>
     <div class="gallery">
       {{{body}}}
