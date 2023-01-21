@@ -1,93 +1,81 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { Post, User, Comment } = require('../models');
 
-// GET all galleries for homepage
+// GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findAll({
+    const postData = await Post.findAll({
       include: [
         {
-          model: Painting,
-          attributes: ['filename', 'description'],
+          model: User,
+          attributes: ['username'],
         },
       ],
     });
 
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
-    );
+    const posts = postData.map((post) => post.get({ plain: true }));
 
-    req.session.save(() => {
-      // We set up a session variable to count the number of times we visit the homepage
-      if (req.session.countVisit) {
-        // If the 'countVisit' session variable already exists, increment it by 1
-        req.session.countVisit++;
-      } else {
-        // If the 'countVisit' session variable doesn't exist, set it to 1
-        req.session.countVisit = 1;
-      }
-
-      res.render('homepage', {
-        galleries,
-        // We send over the current 'countVisit' session variable to be rendered
-        countVisit: req.session.countVisit,
-      });
+    res.render('homepage', {
+      posts,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one gallery
-router.get('/gallery/:id', async (req, res) => {
+// GET one post
+router.get('/post/:id', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: Painting,
-          attributes: [
-            'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
-            'description',
-          ],
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'comment_date'],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
         },
       ],
     });
 
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render('gallery', {
-      gallery,
-      // We are not incrementing the 'countVisit' session variable here
-      // but simply sending over the current 'countVisit' session variable to be rendered
-      countVisit: req.session.countVisit,
+    const post = postData.get({ plain: true });
+
+    res.render('single-post', {
+      ...post,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one painting
-router.get('/painting/:id', async (req, res) => {
-  try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
-
-    const painting = dbPaintingData.get({ plain: true });
-
-    res.render('painting', {
-      painting,
-      // We are not incrementing the 'countVisit' session variable here
-      // but simply sending over the current 'countVisit' session variable to be rendered
-      countVisit: req.session.countVisit,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+// GET login
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
   }
+
+  res.render('login');
 });
+
+// GET signup
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
+});
+
 
 module.exports = router;
