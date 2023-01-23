@@ -7,6 +7,7 @@ const signupHandler = async (event) => {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const confirmPass = document.querySelector('#password2').value.trim();
+    const newMember = document.querySelector('#new-member').value.trim();
     if (password !== confirmPass) {
         alert("Passwords do not match");
         return;
@@ -30,3 +31,6 @@ const signupHandler = async (event) => {
 document
     .querySelector('.signup-form')
     .addEventListener('submit', signupHandler);
+    
+    
+    

@@ -6,27 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Coders Corner</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 {{!-- Main page  --}}
-<body class="bg-gray-200">
-  <header class="bg-white p-6">
-    <h1 class="text-2xl font-medium">The Coder's Corner</h1>
+<body class="bg-indigo-800 text-gray-200">
+  <header class="bg-indigo-800 text-gray-200 p-6 text-center mx-auto">
+    <h1 class="text-6xl font-medium text-2xl font-medium">The Coder's Corner</h1>
   </header>
-  <nav class="bg-white p-6">
-    <a href="/" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Home</a>
-    <a href="/dashboard" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Dashboard</a>
+<nav class="bg-indigo-800 justify-center items-center text-center">
+    <a href="/" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Home</a>
+    <a href="/dashboard" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Dashboard</a>
     {{#if loggedIn}}
-    <a href="/logout" id="logout" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Logout</a>
+    <a href="/logout" id="logout" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Logout</a>
     {{else}}
-    <a href="/login" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Login</a>
-    <a href="/signup" class="inline-block mr-4 text-lg font-medium text-indigo-600 hover:text-indigo-700">Signup</a>
+    <a href="/login" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Login</a>
+    <a href="/signup" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Signup</a>
     {{/if}}
-  </nav>
-  <main class="bg-white p-6">
-    <div class="blogs">
+</nav>
+  <main class="p-6 flex">
       {{{body}}}
-    </div>
   </main>
 </body>
 
