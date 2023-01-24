@@ -1,0 +1,11 @@
+{{!-- display all the blogs  --}}
+
+<div class="w-full blog-view p-4">
+  {{!-- {{>blog_details}} --}}
+  <h3 class="text-lg font-medium mt-4">Blogs</h3>
+  {{#each blogs as |blog|}}
+    {{>blog_details}}
+  {{/each}}
+
+</div>
+

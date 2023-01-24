@@ -1,8 +1,14 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
+const pagination = require('pagination');
 
-// GET all posts for homepage
+// GET show landing page
 router.get('/', async (req, res) => {
+res.render('landing-page');
+});
+
+// GET show all posts on blogs page 
+router.get('/blogs', async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [
@@ -15,7 +21,7 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('homepage', {
+    res.render('blogs', {
       posts,
       loggedIn: req.session.loggedIn,
     });
@@ -23,6 +29,8 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 // GET one post
 router.get('/post/:id', async (req, res) => {
@@ -75,6 +83,32 @@ router.get('/signup', (req, res) => {
   }
 
   res.render('signup');
+});
+
+// GET dashboard 
+router.get('/dashboard', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('dashboard', {
+      posts,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 
