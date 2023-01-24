@@ -8,6 +8,8 @@ const signupHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
     const confirmPass = document.querySelector('#password2').value.trim();
     const newMember = document.querySelector('#new-member').value.trim();
+
+
     if (password !== confirmPass) {
         alert("Passwords do not match");
         return;
@@ -19,6 +21,7 @@ const signupHandler = async (event) => {
             body: JSON.stringify({ name, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
+
         if (response.ok) {
             // If successful, redirect the browser to the profile page
             document.location.replace('/login');
@@ -31,6 +34,7 @@ const signupHandler = async (event) => {
 document
     .querySelector('.signup-form')
     .addEventListener('submit', signupHandler);
+    
     
     
     
