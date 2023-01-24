@@ -10,7 +10,13 @@ res.render('landing-page');
 // GET show all posts on blogs page 
 router.get('/blogs', async (req, res) => {
   try {
-    const postData = await Post.findAll({
+    const page = req.query.page || 1;
+    const limit = 10;  // number of posts per page
+    const offset = (page - 1) * limit;
+
+    const posts = await Post.findAll({
+      limit,
+      offset,
       include: [
         {
           model: User,
@@ -19,17 +25,23 @@ router.get('/blogs', async (req, res) => {
       ],
     });
 
-    const posts = postData.map((post) => post.get({ plain: true }));
+    const totalPosts = await Post.count();
+    const paginator = new pagination.SearchPaginator({
+      prelink: '/blogs',
+      current: page,
+      rowsPerPage: limit,
+      totalResult: totalPosts,
+    });
 
     res.render('blogs', {
       posts,
       loggedIn: req.session.loggedIn,
+      paginator: paginator.getPaginationData(),
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 
 // GET one post
