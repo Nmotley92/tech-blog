@@ -2,7 +2,20 @@ const chance = require('chance').Chance();
 const { User } = require('../models');
 
 const seedUsers = async () => {
-    let users = [];
+    let users = [
+        {
+            username: 'admin',
+            email: 'admin@localhost',
+            password: 'password'
+        },
+        {
+            username: 'testuser1',
+            email: 'testuser1@localhost',
+            password: 'password'
+        },
+
+    ];
+
     for (let i = 0; i < 100; i++) {
         let user = {
             username: chance.first() + chance.integer({ min: 0, max: 999 }),

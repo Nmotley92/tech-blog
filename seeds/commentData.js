@@ -4,13 +4,13 @@ const commentData = [
     {
         comment_text: 'Great post',
         comment_date: new Date(),
-        user_id: 1,
+        commented_by: 'testuser1',
         post_id: 1
     },
     {
         comment_text: 'I agree',
         comment_date: new Date(),
-        user_id: 2,
+        commented_by: 'admin',
         post_id: 1
     },
     // ...
@@ -21,7 +21,7 @@ const seedComments = async () => {
         await Comment.create({
             comment_text: `Comment ${i+1}`,
             comment_date: new Date(),
-            user_id: i+1,
+            commented_by: 'admin',
             post_id: i+1
         });
     }

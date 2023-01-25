@@ -5,13 +5,16 @@ const postData = [
         title: 'My first post',
         content: 'This is the content of my first post',
         post_date: new Date(),
-        user_id: 1
+        posted_by: 'testuser1',
+        
     },
     {
         title: 'My second post',
         content: 'This is the content of my second post',
         post_date: new Date(),
-        user_id: 1
+        posted_by: 'admin',
+
+        
     },
     // ...
 ];
@@ -22,7 +25,8 @@ const seedPosts = async () => {
             title: `Post ${i+1}`,
             content: 'This is the content of post',
             post_date: new Date(),
-            user_id: i+1
+            posted_by: 'admin',
+            
         });
     }
 };
