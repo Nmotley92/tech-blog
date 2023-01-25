@@ -16,7 +16,8 @@ const loginHandler = async (event) => {
             alert("Login successful")
             document.location.replace('/');
         } else {
-            alert("Failed to login");
+            const resBody = await response.json();
+            alert(resBody.message);
         }
     }   
 };

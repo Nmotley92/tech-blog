@@ -82,10 +82,16 @@ router.get('/signup', (req, res) => {
 
 // GET dashboard 
 router.get('/dashboard', async (req, res) => {
+  // if user is not logged in, redirect to login page
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
   try {
     const postData = await Post.findAll({
       where: {
-        user_id: req.session.user_id,
+        posted_by: req.session.username,
       },
       include: [
         {
@@ -102,6 +108,7 @@ router.get('/dashboard', async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
