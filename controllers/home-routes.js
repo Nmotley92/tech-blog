@@ -2,46 +2,26 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const pagination = require('pagination');
 
-// GET show landing page
+// GET find all blog posts
 router.get('/', async (req, res) => {
-res.render('landing-page');
-});
-
-// GET show all posts on blogs page 
-router.get('/blogs', async (req, res) => {
   try {
-    const page = req.query.page || 1;
-    const limit = 10;  // number of posts per page
-    const offset = (page - 1) * limit;
-
-    const posts = await Post.findAll({
-      limit,
-      offset,
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
+    const postData = await Post.findAll({
+      
     });
 
-    const totalPosts = await Post.count();
-    const paginator = new pagination.SearchPaginator({
-      prelink: '/blogs',
-      current: page,
-      rowsPerPage: limit,
-      totalResult: totalPosts,
-    });
+    const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('blogs', {
+
+    res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn,
-      paginator: paginator.getPaginationData(),
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
 
 
 // GET one post
@@ -79,7 +59,7 @@ router.get('/post/:id', async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.render('homepage');
     return;
   }
 

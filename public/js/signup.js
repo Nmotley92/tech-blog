@@ -3,38 +3,42 @@
 const signupHandler = async (event) => {
     event.preventDefault();
     // Collect values from the login form
-    const name = document.querySelector('#name-signup').value.trim();
+    const username = document.querySelector('#name-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const confirmPass = document.querySelector('#password2').value.trim();
-    const newMember = document.querySelector('#new-member').value.trim();
-
+    
+    console.log("Signup");
 
     if (password !== confirmPass) {
         alert("Passwords do not match");
         return;
     }
-    if (name && email && password) {
+    if (username && email && password) {
         // Send a POST request to the API endpoint
         const response = await fetch('/api/users', {
             method: 'POST',
-            body: JSON.stringify({ name, email, password }),
+            body: JSON.stringify({ username, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
             // If successful, redirect the browser to the profile page
-            document.location.replace('/login');
+            alert("Signup successful your are now logged in")
+            document.location.replace('/');
         } else {
-            alert("Failed to login");
+            
+            // alert user to the res body 
+            const resBody = await response.json();
+            alert(resBody.message);
         }
     }   
 }
 // add event listeners to the form
 document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupHandler);
+    .querySelector('#signup')
+    .addEventListener('click', signupHandler);
     
-    
+
     
     

@@ -9,6 +9,11 @@ router.post('/', async (req, res) => {
         if (emailTaken) {
             return res.status(400).json({ message: 'Email address is already in use' });
         }
+        // check if username is already in use
+        const usernameTaken = await User.findOne({ where: { username: req.body.username } });
+        if (usernameTaken) {
+            return res.status(400).json({ message: 'Username is already in use' });
+        }
         // create new user
         const userData = await User.create(req.body);
         req.session.save(() => {

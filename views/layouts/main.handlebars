@@ -7,6 +7,7 @@
   <title>The Coders Corner</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
   
+  
 </head>
 
 {{!-- Main page  --}}
@@ -15,7 +16,7 @@
     <h1 class="text-6xl font-medium text-2xl font-medium">The Coder's Corner</h1>
   </header>
 <nav class="bg-indigo-800 justify-center items-center text-center">
-    <a href="/blogs" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Blogs</a>
+    <a href="/" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Homepage</a>
     <a href="/dashboard" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Dashboard</a>
     {{#if loggedIn}}
     <a href="/logout" id="logout" class="inline-block mr-4 text-lg font-medium text-white hover:text-indigo-700">Logout</a>
@@ -27,6 +28,13 @@
   <main class="p-6 flex">
       {{{body}}}
   </main>
+  
+  {{!-- add script tags to add login.js, logout.js, and signup.js files --}}
+  <script src="/js/login.js"></script>
+  <script src="/js/logout.js"></script>
+  <script src="/js/signup.js"></script>
+ 
 </body>
+
 
 </html>
