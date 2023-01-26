@@ -1,9 +1,12 @@
+
 //  adds user authentication to the application
 const ensureAuthenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/');
-    }
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+      }
+      else {
+        next();
+      }
+    };
 
     module.exports = ensureAuthenticated;

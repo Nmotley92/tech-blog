@@ -115,6 +115,8 @@ router.get('/dashboard', async (req, res) => {
 
 // get new post form
 router.get('/new-post', async (req, res) => {
+
+
   // if user is not logged in, redirect to login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -122,10 +124,7 @@ router.get('/new-post', async (req, res) => {
   }
 
   res.render('new-post', {
-    try
-    
     loggedIn: req.session.loggedIn,
-
   });
 });
 

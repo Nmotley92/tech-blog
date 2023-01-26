@@ -6,6 +6,7 @@ const createPostHandler = async (event) => {
     const content = document.querySelector('#content').value.trim();
     const post_date = new Date();
     
+    
     if (title && content && post_date && posted_by) {
         const response = await fetch(`/api/posts/create`, {
             method: 'POST',
