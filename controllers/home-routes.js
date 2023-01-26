@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
-const pagination = require('pagination');
+
 
 // GET find all blog posts
 router.get('/', async (req, res) => {
@@ -112,6 +112,23 @@ router.get('/dashboard', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// get new post form
+router.get('/new-post', async (req, res) => {
+  // if user is not logged in, redirect to login page
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('new-post', {
+    try
+    
+    loggedIn: req.session.loggedIn,
+
+  });
+});
+
 
 
 module.exports = router;

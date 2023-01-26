@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const ensureAuthenticated  = require('../../utils/auth');
 
+
+
 // create post routes
 router.post('/create', ensureAuthenticated, async (req, res) => {
     try {
@@ -9,14 +11,14 @@ router.post('/create', ensureAuthenticated, async (req, res) => {
         title: req.body.title,
         content: req.body.content,
         post_date: new Date(),
-        user_id: req.session.user_id
+        posted_by: req.session.username,
       });
       res.redirect('/');
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
-  });7
+  });
 
 
 

@@ -88,5 +88,5 @@ router.post('/logout', (req, res) => {
 
 
 
-//don't forget to add the routes to the index.js file in the api folder
+
 
