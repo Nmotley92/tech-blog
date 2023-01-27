@@ -6,16 +6,16 @@ const { Post, User, Comment } = require('../models');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      
+
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-    
+
     res.render('homepage', {
 
       posts,
       loggedIn: req.session.loggedIn,
-      
+
 
     });
   } catch (err) {
@@ -123,9 +123,46 @@ router.get('/new-post', async (req, res) => {
     return;
   }
 
+  const user = await User.findOne({ _id: req.session.userId });
+  const username = user.username;
+
   res.render('new-post', {
     loggedIn: req.session.loggedIn,
+    username: username,
   });
+});
+
+// get edit post form
+router.get('/update/:id', async (req, res) => {
+  // if user is not logged in, redirect to login page
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+    const user = await User.findOne({ _id: req.session.userId });
+    const username = user.username;
+
+    const post = postData.get({ plain: true });
+
+    res.render('update-post', {
+      ...post,
+      loggedIn: req.session.loggedIn,
+      username: username,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 

@@ -1,6 +1,6 @@
 <div class="container mx-auto text-black">
   <form class="bg-white p-6 rounded-lg shadow-md">
-    <h2 class="text-lg font-medium text-black-700 mb-4">Create a new post</h2>
+    <h2 class="text-lg font-medium text-black-700 mb-4">Update post</h2>
     <div class="mb-4">
       <label class="block text-black-700 font-medium mb-2" for="title">
         Title
@@ -10,8 +10,9 @@
         type="text"
         id="title"
         name="title"
+        value="{{title}}"
         required
-      />
+        />
     </div>
     <div class="mb-4">
       <label class="block text-black-700 font-medium mb-2" for="content">
@@ -23,8 +24,12 @@
         name="content"
         rows="8"
         required
-      ></textarea>
+      >{{content}}</textarea>
       {{> username}}
+      <div class="mb-4">
+        Posted on: {{post_date}}
+      </div>
+
     </div>
 
   
@@ -40,4 +45,3 @@
       </button>
     </div>
   </form>
-</div>
