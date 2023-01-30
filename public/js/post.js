@@ -1,12 +1,13 @@
+
 // create a createpost handler for when a user clicks the create post button
 const createPostHandler = async (event) => {
     event.preventDefault();
-    
+
     const title = document.querySelector('#title').value.trim();
     const content = document.querySelector('#content').value.trim();
     const post_date = new Date();
-    
-    
+
+
     if (title && content && post_date && posted_by) {
         const response = await fetch(`/api/posts/create`, {
             method: 'POST',
@@ -21,9 +22,7 @@ const createPostHandler = async (event) => {
     }
 };
 // add event listeners to the form
-document
-    .querySelector('#create-post')
-    .addEventListener('click', createPostHandler);
+document.querySelector('#create-post').addEventListener('click', createPostHandler);
 
 
 
@@ -42,9 +41,7 @@ const deletePostHandler = async (event) => {
     }
 };
 // add event listeners to the form
-document
-    .querySelector('#delete-post')
-    .addEventListener('click', deletePostHandler);
+document.querySelector('#delete-post').addEventListener('click', deletePostHandler);
 
 
 
@@ -69,7 +66,12 @@ const updatePostHandler = async (event) => {
         }
     }
 };
-// add event listeners to the form
+
+
+
+
+
+
 
 
 

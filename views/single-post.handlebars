@@ -1,10 +1,27 @@
 {{!-- Displays a single blog with comments --}}
 <div class="container mx-auto flex flex-wrap py-6">
-<div class="blog-view p-4 w-full">
-  {{>blog-details}}
-  <h3 class="text-lg font-medium mt-4">Comments</h3>
-  {{#each comments as |comment|}}
+  <div class="blog-view p-4 w-full">
+    <div class="border rounded-lg p-4">
+      {{>blog-details}}
+    </div>
+    <h3 class="text-lg font-medium mt-4 mb-4">Comments</h3>
+    {{#each comments as |comment|}}
     {{>comment-details}}
-  {{/each}}
-</div>
+    {{/each}}
+
+    <div class="text-right pr-4 pb-4">
+      <button id="add-comment" class="bg-blue-500 text-white rounded-lg px-4 py-2">Add Comment</button>
+    </div>
+    {{!-- comment form --}}
+    
+    <div class="comment-form bg-gray-700 p-4 rounded-lg text-right hidden">
+      
+        <div class="mb-4 w-full">
+          <textarea id="comment-content" class="bg-gray-800 text-white border border-gray-900 rounded-lg p-2 w-full"></textarea>
+        </div>
+        <button id="submit-comment"class="bg-blue-500 text-white rounded-lg px-4 py-2">Submit Comment</button>
+      
+    </div>
+
+  </div>
 </div>

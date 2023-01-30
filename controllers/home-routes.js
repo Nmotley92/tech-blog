@@ -38,7 +38,7 @@ router.get('/post/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'comment_date'],
+          attributes: ['id', 'comment_text', 'post_id', 'commented_by', 'comment_date'],
           include: {
             model: User,
             attributes: ['username'],
@@ -48,6 +48,7 @@ router.get('/post/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
+    
 
     res.render('single-post', {
       ...post,

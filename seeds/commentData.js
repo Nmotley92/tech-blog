@@ -22,7 +22,7 @@ const seedComments = async () => {
             comment_text: `Comment ${i+1}`,
             comment_date: new Date(),
             commented_by: 'admin',
-            post_id: i+1
+            post_id: 1
         });
     }
 };

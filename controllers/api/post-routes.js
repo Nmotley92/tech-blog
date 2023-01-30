@@ -66,13 +66,13 @@ router.delete('/:id', ensureAuthenticated, async (req, res) => {
 );
 
 // POST route for creating a new comment
-router.post('/create/:id', ensureAuthenticated ,async (req, res) => {
+router.post('/create/comment/:id' , ensureAuthenticated ,async (req, res) => {
     try {
       const newComment = await Comment.create({
         comment_text: req.body.comment_text,
         post_id: req.params.id,
-        user_id: req.session.user_id,
-        comment_date: new Date(),
+        commented_by: req.session.username,
+        comment_date: new Date().toLocaleString(),
       });
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
