@@ -1,7 +1,7 @@
 // create a function to check the idle time
 const checkIdleTime = () => {
     let idleTime = 0;
-    // if the user is logged in
+  
 
     // set an interval to increment the idle time
     const idleInterval = setInterval(async () => {
