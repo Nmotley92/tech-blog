@@ -23,12 +23,13 @@ router.post('/create', ensureAuthenticated, async (req, res) => {
 
 
 // PUT route for updating posts
-router.put('/update/:id', ensureAuthenticated, async (req, res) => {
+router.post('/update/:id', ensureAuthenticated, async (req, res) => {
     try {
       const updatedPost = await Post.update(
         {
           title: req.body.title,
-          content: req.body.content
+          content: req.body.content,
+          post_date: new Date()
         },
         {
           where: {
@@ -36,7 +37,7 @@ router.put('/update/:id', ensureAuthenticated, async (req, res) => {
           }
         }
       );
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/dashboard`);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -74,6 +75,9 @@ router.post('/create/comment/:id' , ensureAuthenticated ,async (req, res) => {
         commented_by: req.session.username,
         comment_date: new Date().toLocaleString(),
       });
+
+      
+
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);

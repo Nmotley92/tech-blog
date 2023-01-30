@@ -1,5 +1,7 @@
 <!-- comments card -->
 <div class="border rounded-lg py-2 bg-gray-800 mb-4">
   <p class="text-white p-2">{{comment_text}}</p>
-  <p class="text-xs text-white p-2">Commented by {{comment_by}} on {{comment_date}}</p>
+  <p class="text-xs text-white p-2">Commented by {{commented_by}} on {{comment_date}}</p>
+  {{!-- if commented_by === logged in user display an edit and delete button --}}
+
 </div>

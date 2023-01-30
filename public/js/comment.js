@@ -1,16 +1,23 @@
 // add event listeners to the click add comment form
-document.querySelector('#add-comment').addEventListener('click', ()=>{
-    console.log('add comment clicked');
-    document.querySelector('.comment-form').classList.toggle('hidden');
-});
+const addComment = document.querySelector('#add-comment');
+const submitComment = document.querySelector('#submit-comment');
 
-// add event listeners to the form
-document.querySelector('#submit-comment').addEventListener('click', async ()=> {
+if (addComment) {
+    addComment.addEventListener('click', ()=> {
+        document.querySelector('.comment-form').classList.toggle('hidden');
+    });
+}
+
+
+if (submitComment) {
+submitComment.addEventListener('click', async ()=> {
 
 
 const comment_text = document.querySelector('#comment-content').value.trim();
 const comment_date = new Date().toLocaleString();
 const post_id = document.querySelector('#post-id').textContent;
+
+
 console.log(post_id);
 
 if (comment_text) {
@@ -28,3 +35,4 @@ if (comment_text) {
 }
 }
 );
+}

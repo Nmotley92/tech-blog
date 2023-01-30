@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
         });
     } catch (err) {
         console.log(err);
+        
         res.status(400).json(err);
     }
 });
@@ -78,6 +79,7 @@ router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
     req.session.destroy(() => {
     res.status(204).end();
+    
     });
     } else {
     res.status(404).json({ message: 'You are not currently logged in' });

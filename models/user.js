@@ -31,7 +31,10 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      
+      validate: {
+        len: [8],
+        is: /^(?=.*[0-9])/
+      },
     },
   },
   {

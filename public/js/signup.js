@@ -1,4 +1,6 @@
 // js to handle the signup form
+const passEl = document.querySelector("#password-signup"); 
+const signupEl = document.querySelector('#signup');
 
 const signupHandler = async (event) => {
     event.preventDefault();
@@ -7,13 +9,18 @@ const signupHandler = async (event) => {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const confirmPass = document.querySelector('#password2').value.trim();
+
+
     
-    console.log("Signup");
+    
 
     if (password !== confirmPass) {
         alert("Passwords do not match");
         return;
     }
+    
+   
+
     if (username && email && password) {
         // Send a POST request to the API endpoint
         const response = await fetch('/api/users', {
@@ -30,15 +37,14 @@ const signupHandler = async (event) => {
             
             // alert user to the res body 
             const resBody = await response.json();
-            alert(resBody.message);
+            alert("Password must be at least 8 characters long and contain at least one number");
         }
     }   
 }
 // add event listeners to the form
-document
-    .querySelector('#signup')
-    .addEventListener('click', signupHandler);
-    
+if (signupEl) {
+    signupEl.addEventListener('click', signupHandler);
+}    
 
     
     

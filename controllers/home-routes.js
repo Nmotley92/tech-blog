@@ -48,10 +48,13 @@ router.get('/post/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
+    const user = await User.findOne({ _id: req.session.userId });
+  const username = user.username;
     
 
     res.render('single-post', {
       ...post,
+      username: username,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -103,6 +106,8 @@ router.get('/dashboard', async (req, res) => {
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
+    
+
 
     res.render('dashboard', {
       posts,
@@ -159,7 +164,7 @@ router.get('/update/:id', async (req, res) => {
     res.render('update-post', {
       ...post,
       loggedIn: req.session.loggedIn,
-      username: username,
+      username: req.session.username,
     });
   } catch (err) {
     res.status(500).json(err);

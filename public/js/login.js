@@ -1,4 +1,4 @@
-
+const loginFormEL = document.querySelector('.login-form');
 //  create a login js file in the public js folder
 const loginHandler = async (event) => {
     event.preventDefault();
@@ -23,8 +23,7 @@ const loginHandler = async (event) => {
     }   
 };
 // add event listeners to the form
-document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginHandler);
-    
+if (loginFormEL) {
+loginFormEL.addEventListener('submit', loginHandler);
+}  
 
