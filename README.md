@@ -27,7 +27,9 @@
 </p>
 
 ## About
-The Coders Corner is a place where coders can come together and share their knowledge and help each other grow as developers.  The Coders Corner is a full stack application that allows users to create an account, login, and post questions and answers.  The application uses a MVC structure and is built using the Model View Controller paradigm.  The application uses the Handlebars.js templating engine to generate the HTML.  The application uses the Sequelize ORM to interact with the MySQL database.  The application uses the Express.js API to handle the routing and the Express-Session npm package to handle user authentication.  The application uses the Bcrypt npm package to hash user passwords.  The application uses the dotenv npm package to store sensitive data in an environment variable file.  The application uses the Express-Handlebars npm package to handle the templating.  The application uses the MySQL2 npm package to connect to the MySQL database and perform queries.  The application uses the Sequelize npm package to interact with the MySQL database.  The application uses the Connect-Session-Sequelize npm package to store session data in the MySQL database.  The application uses the Express-Session npm package to handle user authentication.  The application uses the Bcrypt npm package to hash user passwords.  The application uses the dotenv npm package to store sensitive data in an environment variable file.  The application uses the Express-Handlebars npm package to handle the templating.  The application uses the MySQL2 npm package to connect to the MySQL database and perform queries.  The application uses the Sequelize npm package to interact with the MySQL database.  The application uses the Connect-Session-Sequelize npm package to store session data in the MySQL database.  The application uses the Express-Session npm package to handle user authentication.  The application uses the Bcrypt npm package to hash user passwords.  The application uses the dotenv npm package to store sensitive data in an environment variable file.  The application uses the Express-Handlebars npm package to handle the templating.  The application uses the MySQL2 npm package to connect to the MySQL database and perform queries.  The application uses the Sequelize npm package to interact with the MySQL database.  The application uses the Connect-Session-Sequelize npm package to store session data in the MySQL database.  The application uses the Express-Session npm package to handle user authentication.  The application uses the Bcrypt npm package to hash user passwords.  The application uses the dotenv npm package to store sensitive data
+The Coders Corner is a community of coders that come together to share their knowledge and help each other grow as developers. It's a full stack web application where users can create an account, log in, and post questions and answers. The application is built using the Model View Controller (MVC) architecture, and utilizes Handlebars.js for templating, Sequelize ORM to interact with a MySQL database, and the Express.js API for routing.
+
+To ensure the security of user information, the application uses various npm packages such as Express-Session for user authentication, Bcrypt to hash passwords, and dotenv to store sensitive data in an environment variable file. The session data is stored in the MySQL database using the Connect-Session-Sequelize npm package. In summary, The Coders Corner is a well-rounded application that uses various technologies to provide a secure and user-friendly platform for coders to collaborate and grow.
 ## Installation
 To Install this project
 Clone this repostory to your local machine
@@ -47,11 +49,12 @@ npm start
 ## Visuals
 
 
+<img width="941" alt="coderscornerscreenshot" src="https://user-images.githubusercontent.com/114119193/215669149-3bde03ca-49d2-4387-b50e-3923fa3fdeab.png">
 
 
 
 ## link
-
+:link: https://glacial-beach-87311.herokuapp.com/
 
 
 
